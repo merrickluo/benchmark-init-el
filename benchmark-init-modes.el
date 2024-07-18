@@ -79,8 +79,8 @@
    ("ms" 7 (lambda (a b) (< (string-to-number (aref (cadr a) 2))
                             (string-to-number (aref (cadr b) 2))))
     :right-align t)
-   ("total ms" 7 (lambda (a b) (< (string-to-number (aref (cadr a) 2))
-                                  (string-to-number (aref (cadr b) 2))))
+   ("total ms" 7 (lambda (a b) (< (string-to-number (aref (cadr a) 3))
+                                  (string-to-number (aref (cadr b) 3))))
     :right-align t)]
   "Benchmark list format.")
 
@@ -121,7 +121,7 @@
              (duration (round (cdr (assq :duration value))))
              (duration-adj (round (cdr (assq :duration-adj value)))))
          (push (list name `[,name ,type ,(number-to-string duration-adj)
-                                  ,(number-to-string duration)]) entries)))
+                            ,(number-to-string duration)]) entries)))
      (cdr (benchmark-init/flatten benchmark-init/durations-tree)))
     entries))
 
